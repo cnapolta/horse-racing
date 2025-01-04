@@ -51,8 +51,22 @@ npm run format
 ```
 src/
 ├── assets/
+│   ├── styles/
+│   ├── icons/
+│   └── logo.svg
 ├── components/
+│   └── game/
+│       ├── control/
+│       ├── race/
+│       └── horse/
+├── constants/
 ├── store/
+│   ├── modules/
+│   └── index.ts
 ├── types/
-└── views/
+├── utils/
+├── views/
+├── App.vue
+├── main.ts
+└── vuex.d.ts
 ```

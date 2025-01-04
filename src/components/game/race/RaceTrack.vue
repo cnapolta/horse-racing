@@ -1,7 +1,10 @@
 <template>
   <div class="race-track-container">
     <div v-if="countdown > 0" class="race-results">
-      <div class="countdown">New round starts in {{ countdown }} seconds...</div>
+      <div class="countdown">
+        <template v-if="currentRound === totalRounds">Game finished!</template>
+        <template v-else>New round starts in {{ countdown }} seconds...</template>
+      </div>
       <div class="results-list">
         <h3>Race Results</h3>
         <div v-for="(result, index) in sortedResults" :key="result.horseId" class="result-item">
@@ -63,6 +66,8 @@ const animationFrame = ref<number | null>(null)
 const horseSpeeds = ref<Map<string, number>>(new Map())
 const finishResults = ref<Map<string, number>>(new Map())
 const countdown = computed(() => store.state.game.countdown)
+const currentRound = computed(() => store.state.game.currentRound)
+const totalRounds = computed(() => store.state.game.totalRounds)
 
 const sortedResults = computed(() => {
   return Array.from(finishResults.value.entries())
